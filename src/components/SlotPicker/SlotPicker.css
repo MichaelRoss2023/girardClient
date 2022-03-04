@@ -1,0 +1,98 @@
+html {
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(120px, 1fr));
+    gap: 3% 1%;
+    margin-top: 2%;
+    overflow: auto;
+}
+
+.five-rows {
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    /* grid-template-rows: repeat(5, minmax(120px, 1fr)); */
+    min-height: 75vh;
+}
+
+.calendar-container {
+    padding: 1% 2%;
+}
+
+.volunteer-heading {
+    text-align: left;
+    padding: 1% 0%;
+    color: #3700B3;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.flex-grow {
+    flex: 1 1 auto;
+}
+
+.flex {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.col-flex {
+    flex-direction: column;
+}
+
+.positions {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.month-text {
+    font-size: 2rem;
+    font-weight: bolder;
+    margin-right: 1%;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.month-picker {
+    flex: 1 1 2rem;
+}
+
+.create-event {
+    position: absolute;
+    bottom: 1rem;
+    right: 3rem;
+}
+
+.show-info{
+    position: absolute;
+    bottom: 1rem;
+    right: 8rem;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+    font-size: 5rem !important;
+}
+
+.square {
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid #4c4c4c;
+    margin: 2% 1%;
+}
+
+.purple {
+    background-color: #3700B3;
+}
+
+.white {
+    background-color: white;
+}
+
+.gray {
+    background-color: #ababab;
+}

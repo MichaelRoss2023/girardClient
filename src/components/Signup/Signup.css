@@ -1,0 +1,80 @@
+/* .PrivateTabIndicator-colorSecondary-4 {
+    background-color: #3700B3 !important;
+} */
+
+.card {
+    border: none;
+    box-shadow: 2px 4px 8px #ababab;
+}
+
+.form-content {
+    width: 100%;
+    text-align: center;
+}
+
+.signup-form {
+    padding: 2%;
+    width: 50%;
+    min-height: 80vh;
+    text-align: center;
+    margin: auto;
+}
+
+.heading {
+    padding: 0px 0px 5% 0px;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.name-field {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    flex: 1 1 auto;   
+    margin: 2% 2% 2% 0%;
+    display: block;
+    width: 100%;
+}
+
+.flex-grow {
+    flex: 1 1 auto;
+}
+
+.skills-section {
+    text-align: left;
+}
+
+.skill {
+    display: flex;
+}
+
+.filler {
+    flex: 1 1 auto;
+}
+
+.experience-field {
+    width: auto;
+}
+
+.col-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.makeStyles-root-1 {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.button {
+    width: 100%;
+}
