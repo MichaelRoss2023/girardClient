@@ -1,0 +1,11 @@
+.modal-heading {
+    text-align: center;
+    padding: 0px 0px 2% 0px;
+    font-size: 2.5rem;
+    font-weight: bolder;
+}
+
+.red-button {
+    background-color: #aa0000 !important;
+    color: white !important;
+}
