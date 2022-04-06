@@ -24,8 +24,10 @@ function SlotPicker(props) {
     const [open, setOpen] = React.useState(false);
     const [body, setBody] = React.useState('');
     const history = useHistory();
-   
 
+   //Array to display the day header
+    const displaydays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    //Create the arrays for
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'All'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -196,7 +198,7 @@ function SlotPicker(props) {
             </div>
             <Card style={{minHeight: 'fit-content', padding: '1%'}}>
             <div className="grid">
-                { days.map((day, dayIndex) => <div key={dayIndex} style={{fontWeight: 'bold'}}>{day}</div> ) }
+                { displaydays.map((day, dayIndex) => <div key={dayIndex} style={{fontWeight: 'bold'}}>{day}</div> ) }
             </div>
             <div className="grid five-rows">
                 {
