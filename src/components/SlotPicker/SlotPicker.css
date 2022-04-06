@@ -63,13 +63,13 @@ html {
 }
 
 .create-event {
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     right: 3rem;
 }
 
 .show-info{
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     right: 8rem;
 }
