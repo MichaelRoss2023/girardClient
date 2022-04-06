@@ -26,7 +26,7 @@ function SlotPicker(props) {
     const history = useHistory();
    
 
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'All'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     let today = new Date();
@@ -68,7 +68,7 @@ function SlotPicker(props) {
 
     const filter = (position, day) => {
         position = position.toString().toLowerCase();
-        let invalidDay = isNaN(parseInt(day)) || day < 0 || day > 6;
+        let invalidDay = isNaN(parseInt(day)) || day < 0 || day > 7;
         let invalidPosition = position.length === 0;
         let temp;
         if(invalidDay && invalidPosition) {
@@ -85,11 +85,18 @@ function SlotPicker(props) {
                     if(!isTruthy) {
                         return null;
                     }
-                    if(isNaN(parseInt(day)) || day < 0 || day > 6) {
+                    if(isNaN(parseInt(day)) || day < 0 || day > 7) {
                         return item;
                     }
                 }
-                isTruthy = (item && item.date && (new Date(item.date).getDay() === day));
+                if(day == 7)
+                {
+                    isTruthy = (item && item.date);
+                }
+                else
+                {
+                    isTruthy = (item && item.date && (new Date(item.date).getDay() === day));
+                }
                 return isTruthy ? item : null;
             });
         }
