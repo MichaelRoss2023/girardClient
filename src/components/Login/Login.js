@@ -16,7 +16,7 @@ import Box from '@material-ui/core/Box';
 import Error from '../Error/Error';
 
 
-
+//Taken from Signup.js
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -49,15 +49,19 @@ function Login(props) {
         });
     }
 
+    //Will need to be changed to talk to backend
     const handleSubmit = (event) => {
         // event.preventDefault();
-        console.log('Logged In', formVal);
+        console.log('Logged In', formVal); //BACKEND
+
+        //NEED TO VALIDATE
+        //ROLE BASED ACCESS
     }
 
     return (
         <div className="login-form col-flex card">
             <div className="form-content col-flex flex-grow">
-                <div className="heading">Sign Up</div>
+                <div className="heading">Log In</div>
                 <div className={classes.root}>
                     <form onSubmit={handleSubmit} className="col-flex flex-grow">
                             <div>
