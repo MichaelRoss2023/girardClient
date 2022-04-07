@@ -43,8 +43,6 @@ function Login(props) {
         let field = event.target.name;
         let value = event.target.value;
 
-        }(event);
-
         setFormValue({
             ...formVal,
             [field]: value
