@@ -10,10 +10,13 @@ function Navbar() {
             <span className="filler"></span>
             <ul className="links">
             <li>
-                <Link to="/" style={{ textDecoration: 'none' }}>Home</Link>
+                <Link to="/login" style={{ textDecoration: 'none' }}>Log In</Link>
             </li>
             <li>
-                <Link to="/volunteer" style={{ textDecoration: 'none' }}>Volunteer</Link>
+                <Link to="/" style={{ textDecoration: 'none' }}>Sign Up</Link>
+            </li>
+            <li>
+                <Link to="/volunteer" style={{ textDecoration: 'none' }}>Calendar</Link>
             </li>
             {/* <li>
                 <Link to="account" style={{ textDecoration: 'none' }}>Account</Link>
