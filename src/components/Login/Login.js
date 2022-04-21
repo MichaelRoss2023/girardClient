@@ -53,7 +53,8 @@ function Login(props) {
     const handleSubmit = (event) => {
         // event.preventDefault();
         console.log('Logged In', formVal); //BACKEND
-
+        sessionStorage.setItem("email",formVal[email]);
+        location.reload();
         //NEED TO VALIDATE
         //ROLE BASED ACCESS
     }
