@@ -6,6 +6,8 @@ import SlotPicker from './components/SlotPicker/SlotPicker';
 import CreateEvent from './components/CreateEvent/CreateEvent';
 import Login from './components/Login/Login';
 
+sessionStorage.setItem("email",'');
+
 function App() {
   return (
     <div className="App">
