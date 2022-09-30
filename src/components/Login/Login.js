@@ -79,7 +79,7 @@ function Login(props) {
                             <div className="filler"></div>
                         <div className="filler"></div>
                         <div>
-                            {value === 0 && <Button color="primary" variant="contained" onClick={handleSubmit} className="button">Log In</Button>}
+                            <Button color="primary" variant="contained" onClick={handleSubmit} className="button" id="Log In Button">Log In</Button>
                         </div>
                     </form>
                 </div>
