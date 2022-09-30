@@ -29,8 +29,11 @@ function SlotPicker(props) {
     const displaydays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     //Create the arrays for
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'All'];
+    //Array for display of months and calculation of data
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+
+    //Gets the data of today to set the starting area
     let today = new Date();
     const [currentMonth, setMonth] = useState(today.getMonth()); // months are zero-indexed; so this function would return 10 for November instead of 11
     const [currentYear, setYear] = useState(today.getFullYear());
@@ -50,24 +53,30 @@ function SlotPicker(props) {
         fetchData(currentMonth + 1, currentYear);
     }, [currentMonth, currentYear]);
 
+
+    //Gets data from data !!!!CURRENTLY USING MOCK DATA!!!
     let getData = async () => {
         // fetch(URL).then(res => resolve(res));
         console.log('hi', mockData);
         return mockData;
     };
 
+    //Apply the position search by using filter
     const searchByPosition = (e) => {
         setPositionFilter(e.target.value);
         console.log('Searching by position', e.target.value);
         filter(e.target.value, dayOfWeek);
     }
 
+    //Apply the day search using filter
     const searchByDay = (e) => {
         setDayOfWeek(e.target.value);
         console.log('Searching by day', e.target.value, dayOfWeek);
         filter(positionFilter, e.target.value);
     }
 
+
+    //Uses position and day to narrow down searches. day 7 == all
     const filter = (position, day) => {
         position = position.toString().toLowerCase();
         let invalidDay = isNaN(parseInt(day)) || day < 0 || day > 7;
@@ -160,6 +169,8 @@ function SlotPicker(props) {
         openModal();
     }
 
+
+    //Shows the legend when the info button is clicked
     const showInfo = () => {
         let temp = <div style={{padding: '20vh 30%'}}>
             <h2 style={{paddingLeft: '40px'}}>Legend</h2>
@@ -176,6 +187,7 @@ function SlotPicker(props) {
     const handleClose = () => {
         setOpen(false);
     };
+
 
     const createNewEvent = () => {
         history.push(`/create`);

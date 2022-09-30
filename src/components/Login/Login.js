@@ -53,10 +53,15 @@ function Login(props) {
     const handleSubmit = (event) => {
         // event.preventDefault();
         console.log('Logged In', formVal); //BACKEND
-        sessionStorage.setItem("email",formVal[email]);
-        location.reload();
+        //sessionStorage.setItem("email",formVal.email);
+        sessionStorage.setItem("email","Test@test.com");
+        //window.location.reload();
         //NEED TO VALIDATE
         //ROLE BASED ACCESS
+
+
+
+        //{value === 0 && <Button color="primary" variant="contained" onClick={()=>setValue(1)} className="button">Log In</Button>}
     }
 
     return (
@@ -74,7 +79,7 @@ function Login(props) {
                             <div className="filler"></div>
                         <div className="filler"></div>
                         <div>
-                            {value === 0 && <Button color="primary" variant="contained" onClick={()=>setValue(1)} className="button">Log In</Button>}
+                            {value === 0 && <Button color="primary" variant="contained" onClick={handleSubmit} className="button">Log In</Button>}
                         </div>
                     </form>
                 </div>
