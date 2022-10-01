@@ -14,6 +14,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Error from '../Error/Error';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 //Taken from Signup.js
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login(props) {
+
+    const { loginWithRedirect } = useAuth0();
 
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -61,7 +64,7 @@ function Login(props) {
 
 
 
-        //{value === 0 && <Button color="primary" variant="contained" onClick={()=>setValue(1)} className="button">Log In</Button>}
+        //<Button color="primary" variant="contained" onClick={handleSubmit} className="button">Log In</Button>
     }
 
     return (
@@ -79,7 +82,7 @@ function Login(props) {
                             <div className="filler"></div>
                         <div className="filler"></div>
                         <div>
-                            <Button color="primary" variant="contained" onClick={handleSubmit} className="button" id="Log In Button">Log In</Button>
+                            <Button color="primary" variant="contained" onClick={() => loginWithRedirect()} className="button" id="Log In Button">Log In</Button>
                         </div>
                     </form>
                 </div>
