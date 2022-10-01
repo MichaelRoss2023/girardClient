@@ -29,7 +29,7 @@ function Navbar() {
                     <Link to="/volunteer" style={{ textDecoration: 'none' }}>Calendar</Link>
                 </li>
                 <li>
-                    Account
+                    <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
                 </li>
                 </ul>
                 <AccountCircleIcon fontSize="default" style={{margin: '5px 15px', fontSize: '2.5rem'}}/>
@@ -54,9 +54,10 @@ function Navbar() {
                 <li>
                     <Link to="/volunteer" style={{ textDecoration: 'none' }}>Calendar</Link>
                 </li>
-                <div>
-                    <Button color="primary" variant="text" onClick={() => logout({ returnTo: "https://girard-client.herokuapp.com" })} className="button" id="Log_Out_Button">Log Out</Button>
-                </div>
+                <li>
+                    <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
+                </li>
+                <Button color="primary" variant="text" onClick={() => logout({ returnTo: "https://girard-client.herokuapp.com" })} className="button" id="Log_Out_Button">Log Out</Button>
                 </ul>
             </div>
         </div>

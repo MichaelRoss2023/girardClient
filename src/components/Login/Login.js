@@ -82,7 +82,7 @@ function Login(props) {
                             <div className="filler"></div>
                         <div className="filler"></div>
                         <div>
-                            <Button color="primary" variant="contained" onClick={() => loginWithRedirect()} className="button" id="Log In Button">Log In</Button>
+                            <Button color="primary" variant="contained" onClick={() => loginWithRedirect()} className="button" id="Log_In_Button">Log In</Button>
                         </div>
                     </form>
                 </div>
