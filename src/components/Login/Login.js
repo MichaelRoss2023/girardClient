@@ -19,10 +19,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 //Taken from Signup.js
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
 }));
 
 function Login(props) {
@@ -35,7 +35,7 @@ function Login(props) {
         email: '',
         password: '',
     });
-    
+
     const handleTabChange = (event, newValue) => {
         setValue(newValue);
     }
@@ -57,7 +57,6 @@ function Login(props) {
         // event.preventDefault();
         console.log('Logged In', formVal); //BACKEND
         //sessionStorage.setItem("email",formVal.email);
-        sessionStorage.setItem("email","Test@test.com");
         //window.location.reload();
         //NEED TO VALIDATE
         //ROLE BASED ACCESS
@@ -68,26 +67,24 @@ function Login(props) {
     }
 
     return (
-        <div className="login-form col-flex card">
-            <div className="form-content col-flex flex-grow">
-                <div className="heading">Log In</div>
-                <div className={classes.root}>
-                    <form onSubmit={handleSubmit} className="col-flex flex-grow">
+        <>
+            <br></br>
+            <br></br>
+            <br></br>
+            <img src="https://static.wixstatic.com/media/d680c2_c1e3fe992b274533b001eb9c3f783368~mv2.png/v1/fill/w_272,h_192,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Screen%20Shot%202022-08-30%20at%201_02_49%20PM.png"></img>
+            <div className="login-form col-flex card">
+                <div className="form-content col-flex flex-grow">
+                    <div className="heading">Log In To Access Lesson Scheduling</div>
+                    <div className={classes.root}>
+                        <form onSubmit={handleSubmit} className="col-flex flex-grow">
                             <div>
-                                <Input className="input-field" type="email" name="email" value={formVal.email} onChange={handleChange} placeholder="Email"/>
+                                <Button color="primary" variant="contained" onClick={() => loginWithRedirect()} className="button" id="Log_In_Button">Log In/Register</Button>
                             </div>
-                            <div>
-                                <Input className="input-field" type="password" name="password" value={formVal.password} onChange={handleChange} placeholder="Password"/>
-                            </div>
-                            <div className="filler"></div>
-                        <div className="filler"></div>
-                        <div>
-                            <Button color="primary" variant="contained" onClick={() => loginWithRedirect()} className="button" id="Log_In_Button">Log In</Button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
