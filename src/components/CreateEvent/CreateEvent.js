@@ -13,11 +13,10 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import Card from '../Card/Card';
 import Timepicker from '../Timepicker/Timepicker';
-import axios from 'axios';
 
 function CreateEvent(props) {
 
-    const [formVal, setFormValue] = useState({
+    const [formVal, setFormValue] = React.useState({
         startDate: '',
         endDate: '',
         recurring: false,
@@ -32,49 +31,21 @@ function CreateEvent(props) {
         lessonAssistantReq: false,
         horseLeaderReq: false,
         barnCrewReq: false,
-        pastureCrewReq: false,
         sidewalkerReq: false,
         lessonAssistantCount: '',
         horseLeaderCount: '',
         barnCrewCount: '',
-        pastureCrewCount: '',
         sidewalkerCount: '',
         instructor: ''
     });
 
-    const [instructors, setInstructors] = useState({});
-    const [instructorsArr, setInstructorsArr] = useState([]);
-
     const intervals = ['Every day', 'Two Days', 'Three Days', 'Four Days', 'Five Days', 'Six Days', 'Weekly'];
-
-    useEffect(() => {
-        //call user api to get users
-        axios.get('/users')
-        .then(res => {
-            console.log('users recieved');
-            allUsers = res.data;
-            console.log("RESULT: ", res.data);
-            var allUsers = res.data.filter(user => user.userType == "volunteer");
-            var map = new Map(res.data.map(obj => {
-                return [obj.firstName, obj];
-            }));
-            console.log("map: ", map);
-            setInstructors(map);
-            setInstructorsArr(Array.from(map.keys()));
-        })
-        .catch(err => console.log(err.data));
-
-        //console.log("All Users: ", allUsers);
-
-        //setInstructors(allUsers.filter(user => user.userType == "volunteer"));
-      }, []);
 
     const createNewEvent = () => {
 
     };
 
     const handleChange = (event) => {
-        console.log(event);
         let field = event.target.name || event.target.id; // Get which part was changed
         let value = ((event) => { // Value = event = what is returned by the function?
             switch (event.target.type) { // Returns whether the checkbox is checked or not if the field that called handleChange was a checkbox
@@ -91,98 +62,57 @@ function CreateEvent(props) {
         });
     }
 
-    const submitEventRequest = (e) => {
-        e.preventDefault()
+    const submitEventRequest = () => {
         console.log('Event submit')
-        console.log('form: ', formVal.instructor);
-        console.log('form inst: ', instructors.get(instructorsArr[formVal.instructor]));
         let fD = {};    // The event that we will submit - starts empty
-        let startDate = new Date(formVal.startDate);
-        let endDate = new Date(formVal.endDate);
-        fD.instructor = instructors.get(instructorsArr[formVal.instructor]);
+        fD.instructor = '';
         fD.volunteers = { // Initialize all the values that we will get from the user as empty to begin.
             "barn crew": {
-                minVolunteers: formVal.barnCrewCount || 0,
-                signedUp: []
-            },
-            "pasture crew": {
-                minVolunteers: formVal.pastureCrewCount || 0,
-                signedUp: []
-            },
-            "lesson assistant": {
-                minVolunteers: formVal.lessonAssistantCount || 0,
-                signedUp: []
-            },
-            "sidewalker": {
-                minVolunteers: formVal.sidewalkerCount || 0,
+                required: formVal.barnCrewCount || 0,
                 signedUp: []
             },
             "horse leader": {
-                minVolunteers: formVal.horseLeaderCount || 0,
+                required: formVal.horseLeaderCount || 0,
+                signedUp: []
+            },
+            "lesson assistant": {
+                required: formVal.lessonAssistantCount || 0,
+                signedUp: []
+            },
+            "sidewalker": {
+                required: formVal.sidewalkerCount || 0,
                 signedUp: []
             }
         };
         fD.horses = [];
-        fD.notes = '';
-        // fD.bookedDates = [];
+        fD.bookedDates = [];
 
-        // fD.bookedDates.push(new Date(formVal.startDate));
+        fD.bookedDates.push(new Date(formVal.startDate));
 
-        // Date.prototype.addDays = function (days) {
-        //     var date = new Date(this.valueOf());
-        //     date.setDate(date.getDate() + days);
-        //     return date;
-        // }
-
-        // let date1 = new Date(formVal.startDate);
-        // if (formVal.recurring) { // Calculate the difference between date1 and date2 - determine start and end date?
-        //     let date2 = new Date(formVal.endDate);
-        //     let interval = formVal.interval + 1;
-        //     const diffTime = Math.abs(date2 - date1);
-        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        //     let temp;
-        //     for (let i = interval; i <= diffDays; i += interval) {
-        //         temp = date1.addDays(i);
-        //         fD.bookedDates.push(temp);
-        //     }
-        // }
-
-        // fD.startTime = formVal.startTime;
-        // fD.endTime = formVal.endTime;
-        // fD.notes = "";
-
-        // console.log('Form Data', fD); // Store the event data we got
-        // fetch('http://localhost:2222/lessons/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(fD),
-        // })
-        // .then((response) => response.json())
-        // .then((fD) => {
-        //     console.log('Success:', fD);
-        // })
-        // .catch((error) => {
-        //     console.error('Error: error');
-        // });
-
-        const form = {
-            startTime: formVal.startDate,
-            endTime: formVal.endDate,
-            instructor: fD.instructor,
-            volunteers: fD.volunteers,
-            horses: null,
-            notes: ''
+        Date.prototype.addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
         }
 
-        console.log(form)
+        let date1 = new Date(formVal.startDate);
+        if (formVal.recurring) { // Calculate the difference between date1 and date2 - determine start and end date?
+            let date2 = new Date(formVal.endDate);
+            let interval = formVal.interval + 1;
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            let temp;
+            for (let i = interval; i <= diffDays; i += interval) {
+                temp = date1.addDays(i);
+                fD.bookedDates.push(temp);
+            }
+        }
 
-        axios.post('/lessons', form)
-            .then(res => console.log('Lesson created'))
-            .catch(err => console.log(err.data))
+        fD.startTime = formVal.startTime;
+        fD.endTime = formVal.endTime;
+        fD.notes = "";
 
-        
+        console.log('Form Data', fD); // Store the event data we got
     }
 
     const useStyles = makeStyles((theme) => ({
@@ -237,13 +167,6 @@ function CreateEvent(props) {
                 </div>
                 <div className="flex flex-grow" style={{ justifyContent: 'space-between', margin: '1rem 0' }}>
                     <FormControlLabel
-                        control={<Checkbox id="pastureCrewReq" name="pastureCrewReq" checked={formVal.pastureCrewReq} onChange={handleChange} />}
-                        label="Pasture Crew Required?"
-                    />
-                    <Input style={{ width: '49%' }} name="pastureCrewCount" disabled={!formVal.pastureCrewReq} onChange={handleChange} value={formVal.pastureCrewCount} type="number" placeholder="How many?" />
-                </div>
-                <div className="flex flex-grow" style={{ justifyContent: 'space-between', margin: '1rem 0' }}>
-                    <FormControlLabel
                         control={<Checkbox id="horseLeaderReq" name="horseLeaderReq" checked={formVal.horseLeaderReq} onChange={handleChange} />}
                         label="Horse Leader Required?"
                     />
@@ -257,14 +180,10 @@ function CreateEvent(props) {
                     <Input style={{ width: '49%' }} name="sidewalkerCount" disabled={!formVal.sidewalkerReq} onChange={handleChange} value={formVal.sidewalkerCount} type="number" placeholder="How many?" />
                 </div>
 
-                <div className="flex flex-grow" style={{ justifyContent: 'space-between' }}>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel id="select-instructor">Select Instructor</InputLabel>
-                        <Select labelId="instructor" id="instructor" name="instructor" value={formVal.instructor} onChange={handleChange} >
-                            {instructorsArr.map((instructor, ind) => <MenuItem key={ind} value={ind}>{instructor}</MenuItem>)}
-                        </Select>
-                    </FormControl>
+                <div className="flex flex-grow" style={{ justifyContent: 'space-between', margin: '1rem 0' }}>
+                    <Input type="instructor" name="instructor" value={formVal.instructor} onChange={handleChange} placeholder="Instructor" />
                 </div>
+
                 <Button color="primary" type="submit" variant="contained" onClick={submitEventRequest} style={{ width: '100%', margin: '3rem 0 0 0' }}>Create Event</Button>
             </form>
         </Card>
