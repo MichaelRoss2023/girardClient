@@ -44,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:2222"
+  "proxy": "https://girard-server.herokuapp.com/"
 }
