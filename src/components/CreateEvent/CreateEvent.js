@@ -72,7 +72,7 @@ function CreateEvent(props) {
 
     useEffect(() => {
         //call user api to get users
-        const axios = require("axios");
+        //const axios = require("axios");
 
         const options = {
             method:"GET",
@@ -208,7 +208,7 @@ function CreateEvent(props) {
 
         console.log(form)
 
-        const axios = require("axios");
+        //const axios = require("axios");
 
         const options = {
             method: "POST",
