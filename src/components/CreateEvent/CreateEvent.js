@@ -178,9 +178,32 @@ function CreateEvent(props) {
 
         console.log(form)
 
+        const axios = require("axios");
+
+        const options = {
+            method: "POST",
+            url: "https://girard-server.herokuapp.com/lessons",
+            headers: {"authorization":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im0tTnJzLS10Y0txLU9XSEdiNjVlayJ9.eyJpc3MiOiJodHRwczovL2Rldi02aXItNnFjZC51cy5hdXRoMC5jb20vIiwic3ViIjoicVhOY2xPV1VPbXp0Z29Fekx5QzRmR0haQWplYkNnWGNAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZ2lyYXJkLXNlcnZlci5oZXJva3VhcHAuY29tLyIsImlhdCI6MTY2NjQwNTM1MSwiZXhwIjoxNjY2NDkxNzUxLCJhenAiOiJxWE5jbE9XVU9tenRnb0V6THlDNGZHSFpBamViQ2dYYyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.rI_WMgKOLdMMgjVbb9pVe5qd9dq2S17iZXI8wdVgVJBIbqFUe7-MG1_79fDltL_cZUUNLRgVR3Vd-CpmQW9jTaiaIMvcHGBty2HcFsjHNu2OosLFvvsa5hlurlfgrXwYCMtNhPaRVkc1JGF8g1c_B9BdTRfY5GAHlyhLst6JvsRW9JtwACQUKqVqJ4Xv_qCL6-UOeL3n7nrSnFAPp5jvy0ZRIMkbQySJGQ2BJKvMNoLwB9GaibroWoLPSurHLhCgHOchBtSsKNcIgO-PdgF9KdDWhkI_vZ9Eo9EOqu8_kK12ngWdmsgBQJ9Ys2naHjOD3eyrkGCukWtlIY7VE-l35A"},
+            startTime: formVal.startDate,
+            endTime: formVal.endDate,
+            instructor: fD.instructor,
+            volunteers: fD.volunteers,
+            horses: null,
+            notes: ''
+        }
+
+        axios(options)
+            .then(response => {
+                console.log("Server responded: ",response.data);
+            })
+            .catch(error => {
+                console.log("Server threw error: ",error);
+            })
+        /*
         axios.post('/lessons', form)
             .then(res => console.log('Lesson created'))
             .catch(err => console.log(err.data))
+        */
 
         
     }
