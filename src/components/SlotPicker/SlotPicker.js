@@ -190,7 +190,7 @@ function SlotPicker(props) {
 
 
     const createNewEvent = () => {
-        history.push(`/create`);
+        history.push('/create');
     }
     
     let content = (
@@ -233,7 +233,7 @@ function SlotPicker(props) {
                 })
                 }
             </div>
-            <AddCircleIcon style={{fontSize:"3.5rem"}} color="secondary" onClick={createNewEvent} className="create-event"/>
+            <AddCircleIcon style={{fontSize:"3.5rem"}} color="secondary" id="CreateEventStart" onClick={createNewEvent} className="create-event"/>
             <InfoIcon style={{fontSize:"3.5rem"}} color="secondary" onClick={showInfo} className="show-info"/>
 
             <div className="event">

@@ -1,61 +1,35 @@
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import './Navbar.css';
 import { Link } from 'react-router-dom';
+import React from "react";
+import Button from '@material-ui/core/Button'
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
 
-    if(sessionStorage.getItem("email") != '')
-    {
-        let loggedin = true;
-    }
-    else
-    {
-        let loggedin = false;
-    }
+    const { logout, user, isAuthenticated, isLoading } = useAuth0();
 
-    //if(loggedin){
-    if(false){
-        let content = (
-        <div className="navbar">
-            <div className="content">
-                <span className="npo-heading">Girard Training Stables</span>
-                <span className="filler"></span>
-                <ul className="links">
-                <li>
-                    Log Out
-                </li>
-                <li>
-                    <Link to="/volunteer" style={{ textDecoration: 'none' }}>Calendar</Link>
-                </li>
-                <li>
-                    Account
-                </li>
-                </ul>
-                <AccountCircleIcon fontSize="default" style={{margin: '5px 15px', fontSize: '2.5rem'}}/>
+        return  (
+            isAuthenticated && 
+            (
+            <div className="navbar">
+                <div className="content">
+                    <span className="npo-heading">Girard Training Stables</span>
+                    <span className="filler"></span>
+                    <ul className="links">
+                    <li>
+                        <Link to="/volunteer" style={{ textDecoration: 'none' }}>Calendar</Link>
+                    </li>
+                    <li>
+                        <Link to="/profile" style={{ textDecoration: 'none' }}>Profile</Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => logout({ returnTo: "https://girard-client.herokuapp.com" })} style={{ textDecoration: 'none' }}>Log Out</Link>
+                    </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        );
-    return content; }
-
-    else{
-        let content = (
-        <div className="navbar">
-            <div className="content">
-                <span className="npo-heading">Girard Training Stables</span>
-                <span className="filler"></span>
-                <ul className="links">
-                <li>
-                    <Link to="/loginPrompt" style={{ textDecoration: 'none' }}>Log In</Link>
-                </li>
-                <li>
-                    <Link to="/" style={{ textDecoration: 'none' }}>Sign Up</Link>
-                </li>
-                </ul>
-            </div>
-        </div>
-        );
-        return content;
+        ));
     }
-}
 
 export default Navbar;

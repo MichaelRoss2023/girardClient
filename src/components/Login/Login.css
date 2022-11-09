@@ -14,8 +14,8 @@
 
 .login-form {
     padding: 2%;
-    width: 50%;
-    min-height: 80vh;
+    width: 25%;
+    min-height: 25vh;
     text-align: center;
     margin: auto;
 }
@@ -38,7 +38,7 @@
 }
 
 .input-field {
-    flex: 1 1 auto;   
+    flex: 1 1 auto;
     margin: 2% 2% 2% 0%;
     display: block;
     width: 100%;
