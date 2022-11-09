@@ -14,12 +14,10 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Error from '../Error/Error';
-import axios from 'axios';
-import {useHistory} from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
   return (
     <div
       role="tabpanel"
@@ -60,30 +58,14 @@ const useStyles = makeStyles((theme) => ({
 
 function Signup(props) {
 
-    const { user, isAuthenticated, isLoading } = useAuth0();
-    let history = useHistory();
-
-    axios.get('/users', { params: { email: user.email } } )
-    .then(res => {
-        if (res.data != null)
-        {
-            history.push("/volunteer");
-        }
-    })
-    .catch(err => console.log(err.data));
-
-
-    
-
-
-
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const [formVal, setFormValue] = React.useState({
         firstname: '',
         lastname: '',
         phone: '',
-        email: user.email,
+        email: '',
+        password: '',
         age: '',
         height: '',
         horseExperience: false,
@@ -117,19 +99,10 @@ function Signup(props) {
 
     const handleSubmit = (event) => {
 
-        /* This code hasn't been tested yet, but I believe this should be the right way to send a HTTP Post
-        const Http = new XMLHttpRequest();
-        const url = 'https://girard-server.herokuapp.com/'; // Does this need something extra to send to a specific router? .com/positions? 
-        Http.open("POST", url);
-        Http.send(formVal);
-        Http.onreadystatechange = (e) => {
-            console.log(Http.responseText)
-        }
-        */
         // event.preventDefault();
-        axios.post('/users', formVal)
-        .then(res => console.log('User Signed Up'))
-        .catch(err => console.log(err.data))
+        console.log('Submitted form', formVal);
+
+
     }
 
     return (
@@ -154,7 +127,10 @@ function Signup(props) {
                                 </div>
                             </div>
                             <div>
-                                <Input className="input-field" type="email" name="email" value={formVal.email} onChange={handleChange} placeholder= {user.email}/>
+                                <Input className="input-field" type="email" name="email" value={formVal.email} onChange={handleChange} placeholder="Email"/>
+                            </div>
+                            <div>
+                                <Input className="input-field" type="password" name="password" value={formVal.password} onChange={handleChange} placeholder="Password"/>
                             </div>
                             <div>
                                 <Input className="input-field" type="tel" name="phone" value={formVal.phone} onChange={handleChange} placeholder="Phone Number"/>
