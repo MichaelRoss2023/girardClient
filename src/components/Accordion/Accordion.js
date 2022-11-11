@@ -53,6 +53,7 @@ const AccordionDetails = withStyles((theme) => ({
 }))(MuiAccordionDetails);
 
 export default function CustomAccordion(props) {
+var decider = Math.floor(Math.random() * 5); //REMOVE!!!
 const [expanded, setExpanded] = React.useState('');
 const [subExpanded, setSubExpanded] = React.useState('');
 
@@ -86,7 +87,8 @@ const [subExpanded, setSubExpanded] = React.useState('');
                                                     <div style={{ display: 'flex', flex: '1 1 auto', justifyContent: 'space-between', alignItems: 'center', verticalAlign:'center', height: '1rem'}}>
                                                         <h3>{time.startTime} - {time.endTime}</h3>
                                                         <div>{time.signedUp} of {time.reqd} filled</div>
-                                                        <Button variant="contained" color="primary" onClick={() => props.signUp(time)}>Sign up</Button>
+                                                        {decider <= 1 && <Button variant="contained" color="primary" onClick={() => props.signUp(time)}>Sign up</Button>}
+                                                        {decider > 1 && <Button variant="contained" color="primary" onClick={() => props.signUp(time)}>Unregister</Button>}
                                                     </div>
 
                                                 </AccordionSummary>

@@ -6,11 +6,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 import { red } from '@material-ui/core/colors';
 
 
 //variable to ensure that axios only checks once
 var counter = 0;
+let history = useHistory ();
 
 var submitForm = {
   "firstName": "",
@@ -31,6 +33,9 @@ var submitForm = {
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
+  const saveData = () => {
+    history.push("/volunteer");
+}
   
   if (isLoading) {
     return <div>Loading ...</div>;
@@ -81,7 +86,7 @@ const Profile = () => {
             <FormControlLabel control={<Checkbox name="leading" checked={false}/>} label="Horse Leading"/> <br></br>
           </div>
       </div>
-      <Button color="primary" type="submit" variant="contained" id="SaveProfile" style={{ width: '100%', margin: '3rem 0 0 0' }}>Save</Button>
+      <Button color="primary" type="submit" variant="contained" id="SaveProfile" onClick={saveData}style={{ width: '100%', margin: '3rem 0 0 0' }}>Save</Button>
       </div>
     )
   );

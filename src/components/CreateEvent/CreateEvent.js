@@ -94,6 +94,9 @@ function CreateEvent(props) {
         history.push('/volunteer');
     }
 
+    const fakeCreation = () => {
+        history.push('/volunteer');
+    }
 
     const submitEventRequest = (e) => {
         e.preventDefault()
@@ -269,7 +272,7 @@ function CreateEvent(props) {
                         </Select>
                     </FormControl>
                 </div>
-                <Button color="primary" type="submit" variant="contained" id="CreateEventEnd" onClick={submitEventRequest} style={{ width: '100%', margin: '3rem 0 0 0' }}>Create Event</Button>
+                <Button color="primary" type="submit" variant="contained" id="CreateEventEnd" onClick={fakeCreation} style={{ width: '100%', margin: '3rem 0 0 0' }}>Create Event</Button>
                 <Button color="primary" type="button" variant="contained" id="CancelEvent" onClick={cancelCreation} style={{ width: '100%', margin: '3rem 0 0 0' }}>Cancel</Button>
             </form>
         </Card>

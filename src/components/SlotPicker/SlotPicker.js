@@ -161,9 +161,7 @@ function SlotPicker(props) {
 
     const viewSlotDetails = (data) => {
         console.log('Viewing slot details', data);
-        
-        let temp = <CustomAccordion data={data} handleClose={handleClose} signUp={signUp} />
-
+        const temp = <CustomAccordion data={data} handleClose={handleClose} signUp={signUp} />
         setBody(temp);
 
         openModal();
