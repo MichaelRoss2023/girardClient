@@ -268,7 +268,7 @@ function Signup() {
                             {value === 0 && <Button color="primary" variant="contained" onClick={()=>setValue(1)} className="button">Proceed to Skill Selection</Button>}
                         </div>
                         <div>
-                            {value === 1 && <Button color="primary" variant="contained" type="submit" id="SignUp" className="button">Submit</Button>}
+                            {value === 1 && <Button color="primary" variant="contained" type="submit" id="SignUp" className="button">Submit Sign Up</Button>}
                         </div>
                     </form>
                 </div>
