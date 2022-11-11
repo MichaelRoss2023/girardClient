@@ -12,7 +12,6 @@ import { red } from '@material-ui/core/colors';
 
 //variable to ensure that axios only checks once
 var counter = 0;
-let history = useHistory ();
 
 var submitForm = {
   "firstName": "",
@@ -31,6 +30,7 @@ var submitForm = {
 
 
 const Profile = () => {
+  let history = useHistory ();
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const saveData = () => {
